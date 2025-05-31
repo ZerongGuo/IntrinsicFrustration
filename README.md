@@ -75,4 +75,4 @@ If you use this code in your research, please cite our paper:
 "Higher-order Interactions Induce Chimera States in Globally Coupled Oscillators".
 
 License:
-This project is distributed under the MIT License. See LICENSE file for details.
+This project is distributed under the MIT License.
