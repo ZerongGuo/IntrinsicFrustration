@@ -42,10 +42,10 @@ The project consists of three parts:
          - `TR` stands for "theoretical result";
          - `910` is the same group ratio as above;
          - `150_200` indicates the range of omega_0 and K values.
+      The time step used in generating results from `Theory_R31_vs_K_omega0.m` is dt = 0.0001 / 3.
       Note: Results from `Theory_R31_vs_K_omega0_Chimera.m` are not included, as we found
       the boundary between chimera and incoherent states is independent of omega_0.
-      Therefore, we only calculated z_p vs. K to draw the theoretical boundary in Fig. 4.
-      The time step used in generating results from `Theory_R31_vs_K_omega0.m` is dt = 0.0001 / 3.
+      Therefore, we only calculated z_p vs. K to draw the theoretical boundary in Fig. 4.      
 
 Environment:
 - MATLAB R2021a or later
