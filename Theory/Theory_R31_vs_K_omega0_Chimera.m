@@ -43,7 +43,7 @@ parfor i = 1:length(K_values)
         % Compute the partial order parameter z_1 from three synchronized regions,
         % assuming Theta_{1p} ≈ Theta_{3p} / 3
         z11 = R1_R3_interp(R31) * (gamma1 * exp(1i * Theta31 / 3) + gamma2 * exp(1i * (Theta31 / 3 + 2*pi/3)) + gamma3 * exp(1i * (Theta31 / 3 + 4*pi/3)));
-        z12 = R1_R3_interp(R32) * (gamma1 * exp(1i * Theta32 / 3) + gamma2 * exp(1i * (Theta32 / 3 + 2*pi/3)) + gamma3 * exp(1i * (Theta32 / 3 + 4*pi/3)));
+        z12 = 0;
         z1 = 0.5 * (z11 + z12);  % Total order parameter is the average of the two subpopulations
         R1 = abs(z1);
         Theta1 = angle(z1);
@@ -53,18 +53,18 @@ parfor i = 1:length(K_values)
             % Compute derivatives
             dR31 = (3*K/2) * R1^3 * cos(3*Theta1 - Theta31) * (1 - R31^2) - 3*R31*Delta;
             dTheta31 = (3*K/2) * R1^3 * sin(3*Theta1 - Theta31) * (R31 + 1/R31) - 3*omega0;
-            dR32 = (3*K/2) * R1^3 * cos(3*Theta1 - Theta32) * (1 - R32^2) - 3*R32*Delta;
-            dTheta32 = (3*K/2) * R1^3 * sin(3*Theta1 - Theta32) * (R32 + 1/R32) + 3*omega0;
+            dR32 = 0;       % As these oscillators remain incoherent in the chimera state, their contribution to the order parameter is assumed to be zero
+            dTheta32 = 0;
             
             % Update variables
             R31 = R31 + dR31 * dt;
             Theta31 = Theta31 + dTheta31 * dt;
-            R32 = R32 + dR32 * dt;
-            Theta32 = Theta32 + dTheta32 * dt;
+            R32 = 0;
+            Theta32 = 0;
 
             % Recalculate z1, R1, and Theta1
             z11 = R1_R3_interp(R31) * (gamma1 * exp(1i * Theta31 / 3) + gamma2 * exp(1i * (Theta31 / 3 + 2*pi/3)) + gamma3 * exp(1i * (Theta31 / 3 + 4*pi/3)));
-            z12 = R1_R3_interp(R32) * (gamma1 * exp(1i * Theta32 / 3) + gamma2 * exp(1i * (Theta32 / 3 + 2*pi/3)) + gamma3 * exp(1i * (Theta32 / 3 + 4*pi/3)));
+            z12 = 0;    
             z1 = 0.5 * (z11 + z12);
             R1 = abs(z1);
             Theta1 = angle(z1);
